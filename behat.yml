@@ -1,0 +1,141 @@
+default: # Our DEFAULT profile targets the APACHE container with the @apache tag
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - FeatureContext:
+            parameters:
+              environment_identifier: 'dev'
+              assets_path: %paths.base%/features/assets/
+
+      filters:
+        tags: "@apache"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://apache
+      sessions:
+        default:
+          goutte:
+            guzzle_parameters:
+              verify: false
+              ssl.certificate_authority: false
+      javascript_session: 'selenium2'
+      goutte: ~
+      selenium2:
+        wd_host: http://hub:4444/wd/hub
+        capabilities:
+          browserName: chrome
+          browser: chrome
+          version: 'ANY'
+          browserVersion: 'ANY'
+          chrome:
+            switches:
+              - "--no-sandbox"
+              - "--headless"
+              - "--disable-gpu"
+              - "--timeout 15000"
+              - "--allow-insecure-localhost"
+              - "--allow-running-insecure-content"
+              - "--ignore-certificate-errors"
+              - "--window-size=1280,1600"
+      browser_name: 'chrome'
+      files_path: /var/www/html/sites/behat/features/
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        footer: '.region-footer'
+        page_header: '#page-header-container'
+        main_nav: '.main-nav'
+        breadcrumb: '.breadcrumb'
+        global_search: '#global-search'
+        content: '.region-content'
+        colorbox: '#colorbox'
+        sidebar_first: '.region-sidebar-first'
+        islandora_display: '.islandora-object-content-wrapper'
+        object_metadata: '#object_metadata'
+        compound_object_metadata: '#compound_parent_metadata'
+        jail_wrapper: '.jail-wrapper'
+        object_links: '#object_links'
+        object_content: '.islandora-object-content'
+        in_collection: '#block-system-main .in-collection'
+        mezzanine_row: '.mezzanine.row'
+        search_controls: '.row.search-controls'
+        primary_tabs: 'ul.tabs--primary, ul.tabs.primary'
+        secondary_tabs: 'ul.tabs--secondary, ul.tabs.secondary'
+
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.error'
+        success_message_selector: '.messages.status'
+        warning_message_selector: '.messages.warning'
+
+      api_driver: 'drupal'
+      drush:
+        alias: 'self'
+        root: '/var/www/html'
+      drupal:
+        drupal_root: '/var/www/html'
+
+    Lakion\Behat\MinkDebugExtension:
+      directory: %paths.base%/debug/logs
+      screenshot: true
+      clean_start: true
+
+# tests to global services require base_url overrides, which each require a "profile"
+# to include a test in these profiles, tag it appropriately
+solr: # SOLR profile
+  suites:
+    default:
+      filters:
+        tags: "@solr"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://solr:8080
+
+traefik: # TRAEFIK profile
+  suites:
+    default:
+      filters:
+        tags: "@traefik"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://traefik:8080
+
+fedora: # FEDORA profile
+  suites:
+    default:
+      filters:
+        tags: "@fedora"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://fedora:8080
+
+imageservices: # IMAGESERVICES profile
+  suites:
+    default:
+      filters:
+        tags: "@imageservices"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://image-services:8080
+
+portainer: # PORTAINER profile
+  suites:
+    default:
+      filters:
+        tags: "@portainer"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://isle-portainer:9000
+
+mysql: # MYSQL profile
+  suites:
+    default:
+      filters:
+        tags: "@mysql"
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://mysql:3306
