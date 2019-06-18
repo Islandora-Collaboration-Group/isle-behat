@@ -19,6 +19,7 @@ echo "RUN INSTRUCTIONS  = ${RUN_INSTRUCTS}"
 
 run_service_tests()
 {
+  cd /var/www/html/sites/behat
   php behat --profile=traefik --verbose
   php behat --profile=portainer --verbose
   php behat --profile=mysql --verbose

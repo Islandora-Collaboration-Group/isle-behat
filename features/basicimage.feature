@@ -37,7 +37,7 @@ Feature: Test BasicImage CModel
     Then I should see "Title"
     Then I fill in "edit-titleinfo-title" with "Z (Basic Image) TEST"
     Then I click on the selector "#edit-next"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Image/Z_BASIC_IMAGE_TEST.jpg" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Image/Z_BASIC_IMAGE_TEST.jpg" to "edit-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     Then I click on the selector "#edit-next"
@@ -167,7 +167,7 @@ Feature: Test BasicImage CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Image/Z_BASIC_IMAGE_TEST_REPLACED.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Image/Z_BASIC_IMAGE_TEST_REPLACED.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     #Extra step required to forced reindexing
@@ -195,7 +195,7 @@ Feature: Test BasicImage CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Image/Z_BASIC_IMAGE_TEST.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Image/Z_BASIC_IMAGE_TEST.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"

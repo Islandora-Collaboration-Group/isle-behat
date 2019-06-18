@@ -33,11 +33,11 @@ Feature: Test ORAL HISTORIES CModel
     Then I click on the selector "#edit-next"
     Then I fill in "edit-titleinfo-title" with "Z (ORAL HISTORIES) TEST"
     Then I click on the selector "#edit-next"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/ORAL_HISTORIES/OH_01/MP3.mp3" to "edit-media-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/ORAL_HISTORIES/OH_01/MP3.mp3" to "edit-media-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     And wait 30 seconds
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/ORAL_HISTORIES/OH_01/Transcript.xml" to "edit-transcript-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/ORAL_HISTORIES/OH_01/Transcript.xml" to "edit-transcript-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     And wait 30 seconds
@@ -85,7 +85,7 @@ Feature: Test ORAL HISTORIES CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "replace" in the "TN" row
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/ORAL_HISTORIES/OH_01/Thumbnail.jpg" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/ORAL_HISTORIES/OH_01/Thumbnail.jpg" to "edit-file-upload"
     And I press "Upload"
     When wait 3 seconds
     And I press "Add Contents"
@@ -116,7 +116,7 @@ Feature: Test ORAL HISTORIES CModel
     Given I click "Add a datastream"
     Then I fill in "edit-dsid" with "TN"
     Then I fill in "edit-label" with "Thumbnail"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/ORAL_HISTORIES/OH_01/Thumbnail.jpg" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/ORAL_HISTORIES/OH_01/Thumbnail.jpg" to "edit-file-upload"
     And I press "Upload"
     When wait 3 seconds
     And I press "Add Datastream"

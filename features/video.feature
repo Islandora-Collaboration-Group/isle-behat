@@ -38,7 +38,7 @@ Feature: Test Video CModel
     Then I should see "Title of the work."
     Then I fill in "edit-titleinfo-title" with "Z (Video) TEST"
     Then I click on the selector "#edit-next"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Video/Z_VIDEO_TEST.mp4" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Video/Z_VIDEO_TEST.mp4" to "edit-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     And wait 10 seconds
@@ -183,7 +183,7 @@ Feature: Test Video CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Video/Z_VIDEO_TEST_REPLACED.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Video/Z_VIDEO_TEST_REPLACED.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     #Extra step required to forced reindexing
@@ -211,7 +211,7 @@ Feature: Test Video CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Video/Z_VIDEO_TEST.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Video/Z_VIDEO_TEST.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     Given that I navigate to the page for the object named "Z (Video) TEST"

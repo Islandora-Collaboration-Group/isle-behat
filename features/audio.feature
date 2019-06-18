@@ -39,11 +39,11 @@ Feature: Test Audio CModel
     Then I click on the selector "#edit-next"
     Then I fill in "edit-titleinfo-title" with "Z (Audio) TEST"
     Then I click on the selector "#edit-next"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Audio/Z_AUDIO_TEST.mp3" to "edit-audio-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Audio/Z_AUDIO_TEST.mp3" to "edit-audio-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     Given I check the box "Upload Thumbnail"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-thumbnail-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-thumbnail-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     Then I click on the selector "#edit-next"
@@ -83,7 +83,7 @@ Feature: Test Audio CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "replace" in the "TN" row
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-file-upload"
     And I press "Upload"
     When wait 3 seconds
     And I press "Add Contents"
@@ -114,7 +114,7 @@ Feature: Test Audio CModel
     Given I click "Add a datastream"
     Then I fill in "edit-dsid" with "TN"
     Then I fill in "edit-label" with "Thumbnail"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Audio/Z_AUDIO_TEST.png" to "edit-file-upload"
     And I press "Upload"
     When wait 3 seconds
     And I press "Add Datastream"

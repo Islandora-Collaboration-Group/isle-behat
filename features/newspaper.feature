@@ -44,7 +44,7 @@ Feature: Test Newspaper CModel
     Then I fill in "edit-titleinfo-title" with "Z (Newspaper) TEST"
     Then I fill in "edit-origininfo-dateissued" with "2019-01-01"
     Then I click on the selector "#edit-next"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST.pdf" to "edit-pdf-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST.pdf" to "edit-pdf-file-upload"
     Then I press "Upload"
     Then I wait for AJAX to finish
     Then I click on the selector "#edit-next"
@@ -199,7 +199,7 @@ Feature: Test Newspaper CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST_REPLACE.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST_REPLACE.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     #Extra step required to forced reindexing
@@ -227,7 +227,7 @@ Feature: Test Newspaper CModel
     Given I click "replace" in the "MODS" row
     Then I should see "Replace Datastream"
     Then I should see "Label: MODS Record"
-    When I attach the file "/var/www/html/isle-ingest-samples/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST.xml" to "edit-file-upload"
+    When I attach the file "/var/www/html/sites/behat/features/assets/Newspaper/Z_NEWSPAPER_TEST.xml" to "edit-file-upload"
     Given I press "Upload"
     Then I press "Add Contents"
     Given that I navigate to the page for the object named "Z (Newspaper) TEST"
