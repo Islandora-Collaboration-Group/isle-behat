@@ -49,7 +49,7 @@ Feature: Test BasicImage CModel
     Given I am on "/islandora/search/%22Z%20%28Basic%20Image%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Basic Image) TEST"
-    
+
 
 
     ## Able to upload (replace) thumbnail for Basic Image object?
@@ -69,7 +69,7 @@ Feature: Test BasicImage CModel
     When wait 3 seconds
     And I press "Add Contents"
     Then I should see "Z (Basic Image) TEST"
-    
+
     # Regenerate original thumbnail
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"
@@ -83,7 +83,7 @@ Feature: Test BasicImage CModel
     Then I press "Regenerate"
 
 
-    ## Able to delete TN derivative for Basic Image object? *** 
+    ## Able to delete TN derivative for Basic Image object? ***
     #@api @apache @javascript @basicimage
     #Scenario: Delete TN derivative for Basic Image Object
     #Given I am logged in as a user with the "administrator" role
@@ -95,7 +95,7 @@ Feature: Test BasicImage CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "delete" in the "TN" row
-    Then I check the box "Delete Derivatives" 
+    Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
     Given I am logged in as a user with the "administrator" role
@@ -117,7 +117,7 @@ Feature: Test BasicImage CModel
     Given I click "regenerate" in the "TN" row
     Then I should see "Are you sure you want to regenerate the derivative for the TN datastream?"
     Then I press "Regenerate"
-  
+
     ## Able to regenerate all derivatives for Basic Image object?
     #@api @apache @javascript @basicimage
     #Scenario: Regenerate all derivatives for Basic Image Object
@@ -133,7 +133,7 @@ Feature: Test BasicImage CModel
     Given wait 20 seconds
     Then wait for Ingest to complete
     Then I should see the link "Derivatives successfully created."
-    Given I click "Derivatives successfully created." 
+    Given I click "Derivatives successfully created."
     Then I should see "Created"
 
     ## Able to download an Basic Image object?
@@ -184,7 +184,7 @@ Feature: Test BasicImage CModel
     # Able to search for newly edited MODS datastream for Basic Image object using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28Basic%20Image%29%20TEST%20REPLACED?type=dismax"
     Then I should see "Z (Basic Image) TEST REPLACED"
-  
+
     # Restore Original MODS Datastream
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Basic Image) TEST REPLACED"
@@ -211,13 +211,13 @@ Feature: Test BasicImage CModel
     And I should see "Z (Basic Image) TEST"
 
 
-    ## Able to edit Object Title for Basic Image Object 
+    ## Able to edit Object Title for Basic Image Object
     #@api @apache @javascript @basicimage
-    #Scenario: Edit Basic Image object title 
+    #Scenario: Edit Basic Image object title
     #Given I am logged in as a user with the "administrator" role
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"
-    Then I should see "Z (Basic Image) TEST"  
+    Then I should see "Z (Basic Image) TEST"
     # Navigate to and change Object title
     Then I click "Manage"
     Then I click "Datastreams"
@@ -253,7 +253,7 @@ Feature: Test BasicImage CModel
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"
     Then I should see "Z (Basic Image) TEST"
-    # Navigate to and change item label form  
+    # Navigate to and change item label form
     Then I click "Manage"
     Then I click "Properties"
     Then I should see "A human-readable label"

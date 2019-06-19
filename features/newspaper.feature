@@ -91,7 +91,6 @@ Feature: Test Newspaper CModel
     And I press "Add Contents"
     Then I should see "Z (Newspaper) TEST"
 
-    # another way to test: https://isle.localdomain/islandora/object/samples%3A1/datastream/TN
     # ultimately we want to regen thumbs in this test to go back to the original
     # Regenerate original thumbnail
     Given I am logged in as a user with the "administrator" role
