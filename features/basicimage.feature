@@ -229,7 +229,7 @@ Feature: Test BasicImage CModel
     Then I should see "Z (Basic Image) TEST EDITED"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28Basic%20Image%29%20TEST%20EDITED?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
     # Change Object title back to original
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"
     Then I should see "Z (Basic Image) TEST EDITED"
@@ -243,7 +243,7 @@ Feature: Test BasicImage CModel
     Then I should see "Z (Basic Image) TEST"
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28Basic%20Image%29%20TEST?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
 
 
     ## Able to edit the Item Label of an Basic Image object's Properties?
