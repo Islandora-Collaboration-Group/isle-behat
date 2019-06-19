@@ -250,7 +250,7 @@ Feature: Test Book CModel
     Then I should see "Z (BOOK) TEST EDITED"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28BOOK%29%20TEST%20EDITED?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
     # Change Object title back to original
     Given that I navigate to the page for the object named "Z (BOOK) TEST"
     Then I should see "Z (BOOK) TEST EDITED"
@@ -264,7 +264,7 @@ Feature: Test Book CModel
     Then I should see "Z (BOOK) TEST"
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28BOOK%29%20TEST?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
     # similar test for "replace" 
 
 

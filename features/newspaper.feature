@@ -261,7 +261,7 @@ Feature: Test Newspaper CModel
     Then I should see "Z (Newspaper) TEST EDITED"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28Newspaper%29%20TEST%20EDITED?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
     # Change Object title back to original
     Given that I navigate to the page for the object named "Z (Newspaper) TEST"
     Then I should see "Z (Newspaper) TEST EDITED"
@@ -275,7 +275,7 @@ Feature: Test Newspaper CModel
     Then I should see "Z (Newspaper) TEST"
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28Newspaper%29%20TEST?type=dismax"
-    Then I should see "samples:"
+    Then I should see "behattest:"
     # similar test for "replace"
 
 
@@ -320,7 +320,8 @@ Feature: Test Newspaper CModel
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
-    Then I press "Delete Newspaper"
+    #Then I press "Delete Newspaper"
+    Then I click on the selector "#edit-delete"
     Then I should see "This will remove the"
     # Then I press "Delete"
     Then I click on the selector "#edit-submit"
@@ -330,6 +331,7 @@ Feature: Test Newspaper CModel
     # MAX 30 minutes for this (3x)
     Then wait for Ingest to complete
     Then grab me a screenshot
+    Then I should see "Deleted"
 
     #Then wait for Ingest to complete
     #Then grab me a screenshot
