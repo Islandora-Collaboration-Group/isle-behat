@@ -41,7 +41,7 @@ Feature: Test Compound Object CModel
     Then I wait for AJAX to finish
     Then I click on the selector "#edit-next"
     And wait for the page to be loaded
-    And wait 20 seconds
+    And wait 5 seconds
     Then wait for Ingest to complete
     ## Make sure the object ingested
     Given I am logged in as a user with the "administrator" role
@@ -69,7 +69,7 @@ Feature: Test Compound Object CModel
     Then I wait for AJAX to finish
     Then I click on the selector "#edit-next"
     And wait for the page to be loaded
-    And wait 20 seconds
+    And wait 5 seconds
     Then wait for Ingest to complete
     ## Make sure the object ingested
     Given I am logged in as a user with the "administrator" role
@@ -93,7 +93,8 @@ Feature: Test Compound Object CModel
     Then I fill in "edit-titleinfo-title" with "Z (Compound Object) TEST"
     Then I click on the selector "#edit-next"
     And wait for the page to be loaded
-    And wait 25 seconds
+    And wait 5 seconds
+    Then wait for Ingest to complete
     ## Make sure the object ingested
     Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
@@ -105,23 +106,25 @@ Feature: Test Compound Object CModel
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 1"
     And I press the "1" key in the "edit-child" field
-    And I wait for AJAX to finish 
+    And I wait for AJAX to finish
     Then I click on the selector "#autocomplete"
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
-    And wait 20 seconds
+    And wait 5 seconds
+    Then wait for Ingest to complete
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 2"
     And I press the "2" key in the "edit-child" field
-    And I wait for AJAX to finish 
+    And I wait for AJAX to finish
     Then I click on the selector "#autocomplete"
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
-    And wait 20 seconds
+    And wait 5 seconds
+    Then wait for Ingest to complete
     Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
-    
+
 
 
     ## Able to upload (replace) thumbnail for Compound Object object?
@@ -155,7 +158,7 @@ Feature: Test Compound Object CModel
     And I press "Add Contents"
     Then I should see "Z (Compound Child) 1"
 
-    ## Able to delete TN derivative for Compound Object object? *** 
+    ## Able to delete TN derivative for Compound Object object? ***
     #@api @apache @javascript @compound
     #Scenario: Delete TN derivative for Compound Object Object
     #Given I am logged in as a user with the "administrator" role
@@ -167,7 +170,7 @@ Feature: Test Compound Object CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "delete" in the "TN" row
-    Then I check the box "Delete Derivatives" 
+    Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
     Given I am logged in as a user with the "administrator" role
@@ -222,7 +225,7 @@ Feature: Test Compound Object CModel
     # Able to search for newly edited MODS datastream for Compound Object object using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20REPLACED?type=dismax"
     Then I should see "Z (Compound Object) TEST REPLACED"
-  
+
     # Restore Original MODS Datastream
     Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST REPLACED"
@@ -250,13 +253,13 @@ Feature: Test Compound Object CModel
     Then I should see "Z (Compound Object) TEST"
 
 
-    ## Able to edit Object Title for Compound Object Object 
+    ## Able to edit Object Title for Compound Object Object
     #@api @apache @javascript @compound
-    #Scenario: Edit Compound Object object title 
+    #Scenario: Edit Compound Object object title
     #Given I am logged in as a user with the "administrator" role
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
-    Then I should see "Z (Compound Child) 1"  
+    Then I should see "Z (Compound Child) 1"
     # Navigate to and change Object title
     Then I click "Manage"
     Then I click "Datastreams"
@@ -295,7 +298,7 @@ Feature: Test Compound Object CModel
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
-    # Navigate to and change item label form  
+    # Navigate to and change item label form
     Then I click "Manage"
     Then I click "Properties"
     Then I should see "A human-readable label"
@@ -321,7 +324,7 @@ Feature: Test Compound Object CModel
     Then I should see "Z (Compound Object) TEST"
 
     ##Delete newly ingested object
-    #@api @apache @javascript @compound 
+    #@api @apache @javascript @compound
     #Scenario: Delete newly ingested Compound Object object
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
@@ -364,4 +367,3 @@ Feature: Test Compound Object CModel
     Then I should see "(0 - 0 of 0)"
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%202%22?type=dismax"
     Then I should see "(0 - 0 of 0)"
-
