@@ -321,9 +321,12 @@ Feature: Test Newspaper CModel
     Then I should see "Item Label"
     #Then I press "Delete Newspaper"
     Then I click on the selector "#edit-delete"
+    Then grab me a screenshot
     Then I should see "This will remove the"
+    Then grab me a screenshot
     # Then I press "Delete"
     Then I click on the selector "#edit-submit"
+    Then grab me a screenshot
 
     #And I wait for AJAX to finish
     And wait 5 seconds
