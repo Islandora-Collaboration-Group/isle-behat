@@ -333,6 +333,9 @@ Feature: Test Newspaper CModel
     # MAX 30 minutes for this (3x)
     Then wait for Ingest to complete
     Then grab me a screenshot
+    Given I am on "/admin/reports/dblog"
+    Then grab me a screenshot
+    And wait 600 seconds
     Then I should see "Deleted"
 
     #Then wait for Ingest to complete
