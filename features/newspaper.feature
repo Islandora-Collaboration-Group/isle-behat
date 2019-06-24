@@ -335,7 +335,7 @@ Feature: Test Newspaper CModel
     Then grab me a screenshot
     Given I am on "/admin/reports/dblog"
     Then grab me a screenshot
-    And wait 600 seconds
+    # And wait 600 seconds
     Then I should see "Deleted"
 
     #Then wait for Ingest to complete
