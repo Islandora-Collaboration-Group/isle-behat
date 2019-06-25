@@ -107,6 +107,7 @@ Feature: Test Compound Object CModel
     Then I fill in "edit-child" with "Z (Compound Child) 1"
     And I press the "1" key in the "edit-child" field
     And I wait for AJAX to finish
+    And wait 3 seconds
     Then I click on the selector "#autocomplete"
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
