@@ -98,7 +98,7 @@ Feature: Test BasicImage CModel
     Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Basic Image) TEST"
     Then I should see the link "Manage"
     When I click "Manage"

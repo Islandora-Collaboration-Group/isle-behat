@@ -53,7 +53,7 @@ Feature: Test PDF CModel
     #Then grab me a screenshot
     ## Make sure the object ingested
 
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/%22Z%20%28PDF%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (PDF) TEST"
@@ -203,7 +203,7 @@ Feature: Test PDF CModel
     Then I should see "Z (PDF) TEST REPLACED"
   
     # Restore Original MODS Datastream
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (PDF) TEST REPLACED"
     Then I should see "Z (PDF) TEST"
     Then I click "Manage"

@@ -108,7 +108,7 @@ Feature: Test WARC CModel
     # TODO add the "delete TN" actions, do a search and assert no TN visible
 
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (WARC) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -202,7 +202,7 @@ Feature: Test WARC CModel
     Then I should see "Z (WARC) TEST REPLACED"
   
     # Restore Original MODS Datastream
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (WARC) TEST REPLACED"
     Then I should see "Z (WARC) TEST"
     Then I click "Manage"

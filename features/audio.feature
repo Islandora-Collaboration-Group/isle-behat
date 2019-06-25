@@ -75,7 +75,7 @@ Feature: Test Audio CModel
     Then I should see "Z (Audio) TEST"
 
     # Re-upload original thumbnail
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Audio) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -106,7 +106,7 @@ Feature: Test Audio CModel
     Then I press "Delete"
 
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Audio) TEST"
     Then I should see the link "Manage"
     When I click "Manage"

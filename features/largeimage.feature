@@ -46,7 +46,7 @@ Feature: Test LargeImage CModel
     Then wait for Ingest to complete
     ## Make sure the object ingested
 
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/%22Z%20%28Large%20Image%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Large Image) TEST"
@@ -72,7 +72,7 @@ Feature: Test LargeImage CModel
     Then I should see "Z (Large Image) TEST"
     
     # Regenerate original thumbnail
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Large Image) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -99,7 +99,7 @@ Feature: Test LargeImage CModel
     Then I check the box "Delete Derivatives" 
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Large Image) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -193,7 +193,7 @@ Feature: Test LargeImage CModel
     Then I should see "Z (Large Image) TEST REPLACED"
   
     # Restore Original MODS Datastream
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Large Image) TEST REPLACED"
     Then I should see "Z (Large Image) TEST"
     Then I click "Manage"

@@ -44,7 +44,7 @@ Feature: Test Compound Object CModel
     And wait 5 seconds
     Then wait for Ingest to complete
     ## Make sure the object ingested
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%201%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 1"
@@ -72,7 +72,7 @@ Feature: Test Compound Object CModel
     And wait 5 seconds
     Then wait for Ingest to complete
     ## Make sure the object ingested
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%202%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 2"
@@ -96,7 +96,7 @@ Feature: Test Compound Object CModel
     And wait 5 seconds
     Then wait for Ingest to complete
     ## Make sure the object ingested
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST"
@@ -121,7 +121,7 @@ Feature: Test Compound Object CModel
     Then I click on the selector "#edit-submit"
     And wait 5 seconds
     Then wait for Ingest to complete
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
 
@@ -173,7 +173,7 @@ Feature: Test Compound Object CModel
     Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -190,7 +190,7 @@ Feature: Test Compound Object CModel
     ## Able to search for newly ingested Compound Object object using Islandora simple search?
     #@api @apache @compound
     #Scenario: Check for Compound Object Objects using simple search
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/Compound%20Object?type=dismax"
     Then I should see "Z (Compound Object) TEST"
 
@@ -227,7 +227,7 @@ Feature: Test Compound Object CModel
     Then I should see "Z (Compound Object) TEST REPLACED"
 
     # Restore Original MODS Datastream
-    Given I am logged in as a user with the "administrator" role
+    #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST REPLACED"
     Then I should see "Z (Compound Child) 1"
     Then I click "Manage"
