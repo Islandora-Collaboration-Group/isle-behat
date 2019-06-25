@@ -63,7 +63,7 @@ Feature: Test Newspaper CModel
 
     Then I should see "Z (Newspaper) TEST"
     # Make sure the object ingested
-    Given I am logged in as a user with the "administrator" role
+    # Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/%22Z%20%28Newspaper%20Content%29%20TEST%22?type=dismax"
     Then I should see "Z (Newspaper Content) TEST"
     Given that I navigate to the page for the object named "Z (Newspaper Content) TEST"
@@ -93,7 +93,7 @@ Feature: Test Newspaper CModel
 
     # ultimately we want to regen thumbs in this test to go back to the original
     # Regenerate original thumbnail
-    Given I am logged in as a user with the "administrator" role
+    # Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Newspaper) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -120,7 +120,7 @@ Feature: Test Newspaper CModel
     Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
-    Given I am logged in as a user with the "administrator" role
+    # Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Newspaper) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
@@ -217,7 +217,7 @@ Feature: Test Newspaper CModel
     Then I should see "Z (Newspaper) TEST REPLACED"
 
     # Restore Original MODS Datastream
-    Given I am logged in as a user with the "administrator" role
+    # Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Newspaper) TEST REPLACED"
     Then I should see "Z (Newspaper) TEST"
     Then I click "Manage"
@@ -332,10 +332,10 @@ Feature: Test Newspaper CModel
     And wait 5 seconds
     # MAX 30 minutes for this (3x)
     Then wait for Ingest to complete
-    Then grab me a screenshot
-    Given I am on "/admin/reports/dblog"
-    Then grab me a screenshot
-    And wait 600 seconds
+    # Then grab me a screenshot
+    # Given I am on "/admin/reports/dblog"
+    # Then grab me a screenshot
+    # And wait 600 seconds
     Then I should see "Deleted"
 
     #Then wait for Ingest to complete
