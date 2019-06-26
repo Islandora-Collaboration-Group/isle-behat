@@ -329,10 +329,12 @@ Feature: Test Newspaper CModel
     Then grab me a screenshot
 
     And I wait for AJAX to finish
+    Then grab me a screenshot
     And wait 20 seconds
+    Then grab me a screenshot
     # MAX 30 minutes for this (3x)
     Then wait for Ingest to complete
-    # Then grab me a screenshot
+    Then grab me a screenshot
     # Given I am on "/admin/reports/dblog"
     # Then grab me a screenshot
     # And wait 600 seconds
