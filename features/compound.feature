@@ -3,7 +3,7 @@ Feature: Test Compound Object CModel
   As a developer
   I need to test some sample data
 
-  # Able to ingest the test Compound Object sample objects?
+  # Able to ingest the test Compound Object sample objects? 
   @api @apache @compound @javascript @sample-setup @sample-teardown
   Scenario: Ingest Compound Object Sample Object
     Given I am logged in as a user with the "administrator" role
@@ -105,42 +105,48 @@ Feature: Test Compound Object CModel
     And I click "Compound"
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 1"
-    And I press the ")" key in the "edit-child" field
-    And I press the " " key in the "edit-child" field
+    #And I press the ")" key in the "edit-child" field
+    #And I press the " " key in the "edit-child" field
     And I press the "1" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
     Then grab me a screenshot
     Then I click on the selector "#autocomplete"
     Then grab me a screenshot
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
     And wait 5 seconds
     Then wait for Ingest to complete
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 2"
-    And I press the ")" key in the "edit-child" field
-    And I press the " " key in the "edit-child" field
+    #And I press the ")" key in the "edit-child" field
+    #And I press the " " key in the "edit-child" field
     And I press the "2" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
     Then grab me a screenshot
     Then I click on the selector "#autocomplete"
     Then grab me a screenshot
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
     And wait 5 seconds
     Then wait for Ingest to complete
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
+    And I click "Manage"
+    And I click "Compound"
+    And I click "Reorder"
+    Then grab me a screenshot
+    Then I should see "Z (Compound Child) 1"
+    And I should see "Z (Compound Child) 2"
 
 
 
     ## Able to upload (replace) thumbnail for Compound Object object?
     #@api @apache @javascript @compound
     #Scenario: Replace Compound Object Thumbnail
-    #Given I am logged in as a user with the "administrator" role
+    Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see the link "Manage"
     When I click "Manage"
