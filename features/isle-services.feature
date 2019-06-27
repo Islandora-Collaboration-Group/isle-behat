@@ -47,8 +47,10 @@ Feature: Test IsleServices
     Then I should see "If you're seeing this, you've successfully installed Tomcat. Congratulations!"
     Given I am on "/cantaloupe/"
     Then I should see that the page title is "Cantaloupe Image Server"
-    Given I am on "/adore-djatoka"
-    Then I should see that the page title is "djatoka OpenURL Demo"
+
+    # Removed in 1.1.2
+    #Given I am on "/adore-djatoka"
+    #Then I should see that the page title is "djatoka OpenURL Demo"
 
   # Able to view Tomcat admin panel for fedora container?
   # Able to view Fedora services panels e.g. /objects, /describe etc
