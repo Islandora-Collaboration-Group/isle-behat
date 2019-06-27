@@ -112,6 +112,7 @@ Feature: Test Compound Object CModel
     And wait 3 seconds
     Then grab me a screenshot
     Then I click on the selector "#autocomplete"
+    Then grab me a screenshot
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
     And wait 5 seconds
@@ -125,6 +126,7 @@ Feature: Test Compound Object CModel
     And wait 3 seconds
     Then grab me a screenshot
     Then I click on the selector "#autocomplete"
+    Then grab me a screenshot
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
     And wait 5 seconds
