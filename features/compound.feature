@@ -108,6 +108,7 @@ Feature: Test Compound Object CModel
     And I press the "1" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
+    Then grab me a screenshot
     Then I click on the selector "#autocomplete"
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
@@ -118,6 +119,7 @@ Feature: Test Compound Object CModel
     And I press the "2" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
+    Then grab me a screenshot
     Then I click on the selector "#autocomplete"
     Then I should see "behattest:"
     Then I click on the selector "#edit-submit"
