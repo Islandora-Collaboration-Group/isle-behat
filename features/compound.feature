@@ -105,6 +105,8 @@ Feature: Test Compound Object CModel
     And I click "Compound"
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 1"
+    And I press the ")" key in the "edit-child" field
+    And I press the " " key in the "edit-child" field
     And I press the "1" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
@@ -116,6 +118,8 @@ Feature: Test Compound Object CModel
     Then wait for Ingest to complete
     Then I should see "Add child objects"
     Then I fill in "edit-child" with "Z (Compound Child) 2"
+    And I press the ")" key in the "edit-child" field
+    And I press the " " key in the "edit-child" field
     And I press the "2" key in the "edit-child" field
     And I wait for AJAX to finish
     And wait 3 seconds
