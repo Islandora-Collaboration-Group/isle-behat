@@ -47,33 +47,17 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
     $this->environment_id = $parameters['environment_identifier'];
     $this->assets_path = $parameters['assets_path'];
-    $urlsfile = $this->assets_path . "test_urls.csv";
-    $csv = array_map('str_getcsv', file($urlsfile));
-    $this->tests_environments = array();
-    $headers = array_shift($csv);
-    foreach($csv as $row_key => $test) {
-      $test = array_combine($headers, $test);
-      $this->test_environments[$test['Test ID']] = $test;
-    }
+    // $urlsfile = $this->assets_path . "test_urls.csv";
+    // $csv = array_map('str_getcsv', file($urlsfile));
+    // $this->tests_environments = array();
+    // $headers = array_shift($csv);
+    // foreach($csv as $row_key => $test) {
+    //   $test = array_combine($headers, $test);
+    //   $this->test_environments[$test['Test ID']] = $test;
+    // }
     $this->behat_test_collection_pid = 'behattest:collection';
 
   }
-
-  // /**
-  //    * @Then I should see that the page title is :$expectedTitle
-  //    */
-  // public function iShouldSeeThatThePageTitleIs($expectedTitle)
-  // { // Source: https://stackoverflow.com/questions/40804157/how-to-assert-page-tab-window-title-in-behat-mink
-  //     $titleElement = $this->getSession()->getPage()->find('css', 'head title');
-  //     if ($titleElement === null) {
-  //         throw new PendingException('Page title element was not found!');
-  //     } else {
-  //         $title = $titleElement->getText();
-  //         if ($expectedTitle !== $title) {
-  //             throw new PendingException("Incorrect title! Expected:$expectedTitle | Actual:$title ");
-  //         }
-  //     }
-  // }
 
   /**
    * @Then I should see that the page title is :arg1
@@ -631,7 +615,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
   /** @AfterScenario @apache&&@sample-teardown */
   public function after($event) {
-    // REALLY we should be testing to see if we made the test collection before deleting it 
+    // REALLY we should be testing to see if we made the test collection before deleting it
     // if ($this->temp_behat_test_collection_delete == true) {
     if (true) {
       echo("Ensuring login as administrator user...\n");

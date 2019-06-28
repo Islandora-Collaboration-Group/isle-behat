@@ -315,7 +315,12 @@ Feature: Test Newspaper CModel
     Given that I navigate to the page for the object named "Z (Newspaper Content) TEST"
     Then I click "Expand all months"
     Then I should see the link "January 01, 2019"
-    # Delete new object
+
+    # Delete new object, but not too quickly - there seems to need to be
+    #  time to finish a previous ingest?
+    Given I am logged in as a user with the "administrator" role
+    Given that I navigate to the page for the object named "Z (Newspaper Content) TEST"
+    Then wait 10 seconds
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -330,7 +335,7 @@ Feature: Test Newspaper CModel
 
     And I wait for AJAX to finish
     Then grab me a screenshot
-    And wait 20 seconds
+    And wait 5 seconds
     Then grab me a screenshot
     # MAX 30 minutes for this (3x)
     Then wait for Ingest to complete
