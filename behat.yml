@@ -9,7 +9,7 @@ default: # Our DEFAULT profile targets the APACHE container with the @apache tag
         - FeatureContext:
             parameters:
               environment_identifier: 'dev'
-              assets_path: %paths.base%/features/assets/
+              assets_path: "%paths.base%/features/assets/"
 
       filters:
         tags: "@apache"
@@ -80,7 +80,7 @@ default: # Our DEFAULT profile targets the APACHE container with the @apache tag
         drupal_root: '/var/www/html'
 
     Lakion\Behat\MinkDebugExtension:
-      directory: %paths.base%/debug/logs
+      directory: "%paths.base%/debug/logs"
       screenshot: true
       clean_start: true
 
