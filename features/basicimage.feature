@@ -290,7 +290,11 @@ Feature: Test BasicImage CModel
     Then I should see "This action cannot be undone."
     Then I press "Delete"
     And I wait for AJAX to finish
-    And wait 5 seconds
+
     # Check that new object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28Basic%20Image%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"
