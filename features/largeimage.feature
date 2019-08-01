@@ -50,7 +50,7 @@ Feature: Test LargeImage CModel
     Given I am on "/islandora/search/%22Z%20%28Large%20Image%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Large Image) TEST"
-    
+
 
 
     ## Able to upload (replace) thumbnail for Large Image object?
@@ -70,7 +70,7 @@ Feature: Test LargeImage CModel
     When wait 3 seconds
     And I press "Add Contents"
     Then I should see "Z (Large Image) TEST"
-    
+
     # Regenerate original thumbnail
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Large Image) TEST"
@@ -84,7 +84,7 @@ Feature: Test LargeImage CModel
     Then I press "Regenerate"
 
 
-    ## Able to delete TN derivative for Large Image object? *** 
+    ## Able to delete TN derivative for Large Image object? ***
     #@api @apache @javascript @largeimage
     #Scenario: Delete TN derivative for Large Image Object
     #Given I am logged in as a user with the "administrator" role
@@ -96,7 +96,7 @@ Feature: Test LargeImage CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "delete" in the "TN" row
-    Then I check the box "Delete Derivatives" 
+    Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
     #Given I am logged in as a user with the "administrator" role
@@ -118,7 +118,7 @@ Feature: Test LargeImage CModel
     Given I click "regenerate" in the "TN" row
     Then I should see "Are you sure you want to regenerate the derivative for the TN datastream?"
     Then I press "Regenerate"
-  
+
     ## Able to regenerate all derivatives for Large Image object?
     #@api @apache @javascript @largeimage
     #Scenario: Regenerate all derivatives for Large Image Object
@@ -133,7 +133,7 @@ Feature: Test LargeImage CModel
     Given I press "Regenerate"
     Then wait for Ingest to complete
     Then I should see the link "Derivatives successfully created."
-    Given I click "Derivatives successfully created." 
+    Given I click "Derivatives successfully created."
     Then I should see "Created"
 
 
@@ -191,7 +191,7 @@ Feature: Test LargeImage CModel
     # Able to search for newly edited MODS datastream for Large Image object using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28Large%20Image%29%20TEST%20REPLACED?type=dismax"
     Then I should see "Z (Large Image) TEST REPLACED"
-  
+
     # Restore Original MODS Datastream
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Large Image) TEST REPLACED"
@@ -218,13 +218,13 @@ Feature: Test LargeImage CModel
     And I should see "Z (Large Image) TEST"
 
 
-    ## Able to edit Object Title for Large Image Object 
+    ## Able to edit Object Title for Large Image Object
     #@api @apache @javascript @largeimage
-    #Scenario: Edit Large Image object title 
+    #Scenario: Edit Large Image object title
     #Given I am logged in as a user with the "administrator" role
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Large Image) TEST"
-    Then I should see "Z (Large Image) TEST"  
+    Then I should see "Z (Large Image) TEST"
     # Navigate to and change Object title
     Then I click "Manage"
     Then I click "Datastreams"
@@ -261,7 +261,7 @@ Feature: Test LargeImage CModel
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (Large Image) TEST"
     Then I should see "Z (Large Image) TEST"
-    # Navigate to and change item label form  
+    # Navigate to and change item label form
     Then I click "Manage"
     Then I click "Properties"
     Then I should see "A human-readable label"
@@ -299,6 +299,11 @@ Feature: Test LargeImage CModel
     Then I press "Delete"
     And I wait for AJAX to finish
     And wait 5 seconds
+    
     # Check that new object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28Large%20Image%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"

@@ -3,7 +3,7 @@ Feature: Test Compound Object CModel
   As a developer
   I need to test some sample data
 
-  # Able to ingest the test Compound Object sample objects? 
+  # Able to ingest the test Compound Object sample objects?
   @api @apache @compound @javascript @sample-setup @sample-teardown
   Scenario: Ingest Compound Object Sample Object
     Given I am logged in as a user with the "administrator" role
@@ -376,7 +376,12 @@ Feature: Test Compound Object CModel
     Then I press "Delete"
     And I wait for AJAX to finish
     And wait 20 seconds
+
     # Check that second child object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%201%22?type=dismax"

@@ -57,7 +57,7 @@ Feature: Test PDF CModel
     Given I am on "/islandora/search/%22Z%20%28PDF%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (PDF) TEST"
-    
+
 
 
     ## Able to upload (replace) thumbnail for PDF object?
@@ -77,7 +77,7 @@ Feature: Test PDF CModel
     When wait 3 seconds
     And I press "Add Contents"
     Then I should see "Z (PDF) TEST"
-    
+
     # Regenerate original thumbnail
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (PDF) TEST"
@@ -91,7 +91,7 @@ Feature: Test PDF CModel
     Then I press "Regenerate"
 
 
-    ## Able to delete TN derivative for PDF object? *** 
+    ## Able to delete TN derivative for PDF object? ***
     #@api @apache @javascript @pdf
     #Scenario: Delete TN derivative for PDF Object
     #Given I am logged in as a user with the "administrator" role
@@ -103,7 +103,7 @@ Feature: Test PDF CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "delete" in the "TN" row
-    Then I check the box "Delete Derivatives" 
+    Then I check the box "Delete Derivatives"
     Then I press "Delete"
     #Add Original Thumbnail and Thumbnail datastream back
     #Given I am logged in as a user with the "administrator" role
@@ -125,7 +125,7 @@ Feature: Test PDF CModel
     Given I click "regenerate" in the "TN" row
     Then I should see "Are you sure you want to regenerate the derivative for the TN datastream?"
     Then I press "Regenerate"
-  
+
     ## Able to regenerate all derivatives for PDF object? ***  See lower tests
     #@api @apache @javascript @pdf
     #Scenario: Regenerate all derivatives for PDF Object
@@ -144,11 +144,11 @@ Feature: Test PDF CModel
     Then wait for Ingest to complete
     #Then grab me a screenshot
     Then I should see the link "Derivatives successfully created."
-    Given I click "Derivatives successfully created." 
+    Given I click "Derivatives successfully created."
     Then I should see "Created"
 
 
-    ## Able to download an PDF object? 
+    ## Able to download an PDF object?
     #@api @apache @pdf @javascript
     #Scenario: Check for PDF OBJ download
     #Given I am logged in as a user with the "administrator" role
@@ -201,7 +201,7 @@ Feature: Test PDF CModel
     # Able to search for newly edited MODS datastream for PDF object using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28PDF%29%20TEST%20REPLACED?type=dismax"
     Then I should see "Z (PDF) TEST REPLACED"
-  
+
     # Restore Original MODS Datastream
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (PDF) TEST REPLACED"
@@ -228,13 +228,13 @@ Feature: Test PDF CModel
     And I should see "Z (PDF) TEST"
 
 
-    ## Able to edit Object Title for PDF Object 
+    ## Able to edit Object Title for PDF Object
     #@api @apache @pdf
-    #Scenario: Edit PDF object title 
+    #Scenario: Edit PDF object title
     #Given I am logged in as a user with the "administrator" role
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (PDF) TEST"
-    Then I should see "Z (PDF) TEST"  
+    Then I should see "Z (PDF) TEST"
     # Navigate to and change Object title
     Then I click "Manage"
     Then I click "Datastreams"
@@ -271,7 +271,7 @@ Feature: Test PDF CModel
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (PDF) TEST"
     Then I should see "Z (PDF) TEST"
-    # Navigate to and change item label form  
+    # Navigate to and change item label form
     Then I click "Manage"
     Then I click "Properties"
     Then I should see "A human-readable label"
@@ -311,6 +311,11 @@ Feature: Test PDF CModel
     And wait 20 seconds
     Then wait for Ingest to complete
     #Then grab me a screenshot
+
     # Check that new object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28PDF%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"

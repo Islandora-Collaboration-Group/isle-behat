@@ -55,7 +55,7 @@ Feature: Test ORAL HISTORIES CModel
     Given I am on "/islandora/search/%22Z%20%28ORAL%20HISTORIES%29%20TEST%22?type=dismax"
     Then I should see "(1 - 1 of 1)"
     Then I should see "Z (ORAL HISTORIES) TEST"
-    
+
 
 
     ## Able to upload (replace) thumbnail for ORAL HISTORIES object?
@@ -75,7 +75,7 @@ Feature: Test ORAL HISTORIES CModel
     When wait 3 seconds
     And I press "Add Contents"
     Then I should see "Z (ORAL HISTORIES) TEST"
-    
+
     # Re-upload original thumbnail
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (ORAL HISTORIES) TEST"
@@ -92,7 +92,7 @@ Feature: Test ORAL HISTORIES CModel
     Then I should see "Z (ORAL HISTORIES) TEST"
 
 
-    ## Able to delete TN derivative for ORAL HISTORIES object? *** 
+    ## Able to delete TN derivative for ORAL HISTORIES object? ***
     #@api @apache @javascript @oralhistories
     #Scenario: Delete TN derivative for ORAL HISTORIES Object
     #Given I am logged in as a user with the "administrator" role
@@ -104,7 +104,7 @@ Feature: Test ORAL HISTORIES CModel
     Then I should see "PARENT COLLECTIONS"
     Then I click "Datastreams"
     Given I click "delete" in the "TN" row
-    Then I check the box "Delete Derivatives" 
+    Then I check the box "Delete Derivatives"
     Then I press "Delete"
 
     #Add Original Thumbnail and Thumbnail datastream back
@@ -127,8 +127,8 @@ Feature: Test ORAL HISTORIES CModel
     Given I click "regenerate" in the "TN" row
     Then I should see "Are you sure you want to regenerate the derivative for the TN datastream?"
     Then I press "Regenerate"
-  
-    ## Able to regenerate all derivatives for ORAL HISTORIES object? 
+
+    ## Able to regenerate all derivatives for ORAL HISTORIES object?
     #@api @apache @javascript @oralhistories
     #Scenario: Regenerate all derivatives for ORAL HISTORIES Object
     #Given I am logged in as a user with the "administrator" role
@@ -144,11 +144,11 @@ Feature: Test ORAL HISTORIES CModel
     Then wait for Ingest to complete
     #Then grab me a screenshot
     Then I should see the link "Derivatives successfully created."
-    Given I click "Derivatives successfully created." 
+    Given I click "Derivatives successfully created."
     Then I should see "Created"
 
 
-    ## Able to download a ORAL HISTORIES object? 
+    ## Able to download a ORAL HISTORIES object?
     #@api @apache @oralhistories @javascript
     #Scenario: Check for ORAL HISTORIES OBJ download
     #Given I am logged in as a user with the "administrator" role
@@ -200,7 +200,7 @@ Feature: Test ORAL HISTORIES CModel
     # Able to search for newly edited MODS datastream for AUDIO object using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28ORAL%20HISTORIES%29%20TEST%20REPLACED?type=dismax"
     Then I should see "Z (ORAL HISTORIES) TEST REPLACED"
-  
+
     # Restore Original MODS Datastream
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (ORAL HISTORIES) TEST REPLACED"
@@ -227,13 +227,13 @@ Feature: Test ORAL HISTORIES CModel
     And I should see "Z (ORAL HISTORIES) TEST"
 
 
-    ## Able to edit Object Title for ORAL HISTORIES Object 
+    ## Able to edit Object Title for ORAL HISTORIES Object
     #@api @apache @oralhistories
-    #Scenario: Edit ORAL HISTORIES object title 
+    #Scenario: Edit ORAL HISTORIES object title
     #Given I am logged in as a user with the "administrator" role
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (ORAL HISTORIES) TEST"
-    Then I should see "Z (ORAL HISTORIES) TEST"  
+    Then I should see "Z (ORAL HISTORIES) TEST"
     # Navigate to and change Object title
     Then I click "Manage"
     Then I click "Datastreams"
@@ -268,7 +268,7 @@ Feature: Test ORAL HISTORIES CModel
     # Navigate to Object
     Given that I navigate to the page for the object named "Z (ORAL HISTORIES) TEST"
     Then I should see "Z (ORAL HISTORIES) TEST"
-    # Navigate to and change item label form  
+    # Navigate to and change item label form
     Then I click "Manage"
     Then I click "Properties"
     Then I should see "A human-readable label"
@@ -305,7 +305,12 @@ Feature: Test ORAL HISTORIES CModel
     Then I should see "This action cannot be undone."
     Then I press "Delete"
     And I wait for AJAX to finish
-    And wait 20 seconds
+    And wait 15 seconds
+
     # Check that new object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"

@@ -265,7 +265,7 @@ Feature: Test Book CModel
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28BOOK%29%20TEST?type=dismax"
     Then I should see "behattest:"
-    # similar test for "replace" 
+    # similar test for "replace"
 
 
     ## Able to edit the Item Label of an BOOK object's Properties?
@@ -313,18 +313,11 @@ Feature: Test Book CModel
     Then I press "Delete"
     And I wait for AJAX to finish
     And wait 20 seconds
+
     # Check that new object is deleted
-    Then wait 20 seconds
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
     When I am on "/islandora/search/%22Z%20%28BOOK%29%20TEST%22?type=dismax"
     Then I should see "(0 - 0 of 0)"
-    #Delete newly ingested object
-
-    #@api @apache @javascript @book @sample-teardown
-    #Scenario: Delete Behat Test Collection
-    #Given I am logged in as a user with the "administrator" role
-    #When I am on "/islandora/object/behattest:collection"
-    #When I click "Manage"
-    #Then I click "Properties"
-    #Then I click on the selector "#edit-delete"
-    #Then I click on the selector "#edit-submit"
-    #And I wait for AJAX to finish
