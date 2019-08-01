@@ -316,11 +316,17 @@ Feature: Test Newspaper CModel
     Then I click "Expand all months"
     Then I should see the link "January 01, 2019"
 
+    # PREP FOR DELETION
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
+
     # Delete new object, but not too quickly - there seems to need to be
     #  time to finish a previous ingest?
     Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Newspaper Content) TEST"
-    Then wait 10 seconds
+    Then wait 3 seconds
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -334,24 +340,29 @@ Feature: Test Newspaper CModel
     Then grab me a screenshot
 
     And I wait for AJAX to finish
-    Then grab me a screenshot
-    And wait 5 seconds
-    Then grab me a screenshot
-    # MAX 30 minutes for this (3x)
-    Then wait for Ingest to complete
-    Then grab me a screenshot
+    # Then grab me a screenshot
+    # And wait 5 seconds
+    # Then grab me a screenshot
+    # # MAX 30 minutes for this (3x)
+    # Then wait for Ingest to complete
+    # Then grab me a screenshot
     # Given I am on "/admin/reports/dblog"
     # Then grab me a screenshot
     # And wait 600 seconds
 
     # TODO: This block should be uncommented when we can make this less brittle!
-    # Then I should see "Deleted"
-    #
+    Then I should see "Deleted"
+    
     # #Then wait for Ingest to complete
     # #Then grab me a screenshot
     # #Then wait for Ingest to complete
     # #Then grab me a screenshot
-    # # Check that new object is deleted
-    # Given I am on "/islandora/search/%22Z%20%28Newspaper%20Content%29%20TEST%22?type=dismax"
-    # Then I should see "(0 - 0 of 0)"
-    # #Then grab me a screenshot
+
+    # Check that new object is deleted
+    Then I run cron
+    Given I am on "/admin/config/development/performance"
+    Then I press "Clear all caches"
+    And wait 5 seconds
+    Given I am on "/islandora/search/%22Z%20%28Newspaper%20Content%29%20TEST%22?type=dismax"
+    Then I should see "(0 - 0 of 0)"
+    #Then grab me a screenshot
