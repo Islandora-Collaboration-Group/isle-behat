@@ -349,7 +349,7 @@ Feature: Test Compound Object CModel
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
-    Then I press "Permanently remove 'Z (Compound Object) TEST' from repository"
+    Then I press "Delete Compound Object"
     Then I should see "This action cannot be undone."
     Then I press "Delete"
     And I wait for AJAX to finish
