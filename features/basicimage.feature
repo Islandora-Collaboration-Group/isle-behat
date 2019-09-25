@@ -117,6 +117,7 @@ Feature: Test BasicImage CModel
     Given I click "regenerate" in the "TN" row
     Then I should see "Are you sure you want to regenerate the derivative for the TN datastream?"
     Then I press "Regenerate"
+    Then wait for Ingest to complete
 
     ## Able to regenerate all derivatives for Basic Image object?
     #@api @apache @javascript @basicimage
