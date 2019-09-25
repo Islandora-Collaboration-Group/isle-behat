@@ -140,7 +140,7 @@ Feature: Test Audio CModel
     Given I press "Regenerate"
     Then wait for Ingest to complete
     Then I should see the link "Derivatives successfully created"
-    Given I click "Derivatives successfully created."
+    Given I click "Derivatives successfully created"
     Then I should see "Created"
 
 

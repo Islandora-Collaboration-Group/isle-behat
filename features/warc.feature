@@ -145,7 +145,7 @@ Feature: Test WARC CModel
     #Then grab me a screenshot
 
     Then I should see the link "Derivatives successfully created"
-    Given I click "Derivatives successfully created."
+    Given I click "Derivatives successfully created"
     Then I should see "Created"
 
     ## Able to download a WARC object?
