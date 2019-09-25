@@ -159,7 +159,7 @@ Feature: Test Newspaper CModel
     #Then grab me a screenshot
     Then wait for Ingest to complete
     #Then grab me a screenshot
-    Then I should see the link "Derivatives successfully created."
+    Then I should see the link "Derivatives successfully created"
 
 
     ## Able to download an Newspaper object?
