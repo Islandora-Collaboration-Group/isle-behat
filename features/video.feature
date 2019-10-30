@@ -56,7 +56,6 @@ Feature: Test Video CModel
 
     #Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/%22Z%20%28Video%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Video) TEST"
 
 

@@ -46,7 +46,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%201%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 1"
     # Add second object
     And I am on "/islandora/object/behattest:collection"
@@ -74,7 +73,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%202%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 2"
     And I am on "/islandora/object/behattest:collection"
     Then I should see "Behat Test Collection"
@@ -98,7 +96,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST"
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     And I click "Manage"
@@ -265,7 +262,6 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     Given the cache has been cleared
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST"
 
 
@@ -286,7 +282,6 @@ Feature: Test Compound Object CModel
     Then I click on the selector "#edit-update"
     Then I should see "Z (Compound Child) 1"
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20EDITED?type=dismax"
     Then I should see "behattest:"
@@ -322,7 +317,6 @@ Feature: Test Compound Object CModel
     When I press "Update Properties"
     And wait 20 seconds
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST LABEL-EDITED"
     # Able to search for newly edited Item Label of an Compound Object object's Properties using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20LABEL-EDITED?type=dismax"

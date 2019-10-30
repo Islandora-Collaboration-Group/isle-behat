@@ -14,10 +14,10 @@ Feature: Test IsleServices
 
   # Able to view Portainer Admin panel?
   # http://isle-portainer:9000
-  @portainer
-  Scenario: portainer online
-    Given I am on "/"
-    Then I should see that the page title is "Portainer"
+  # @portainer
+  # Scenario: portainer online
+  #   Given I am on "/"
+  #   Then I should see that the page title is "Portainer"
 
   # Able to connect to MYQSL?
   # http://mysql:3306
