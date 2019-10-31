@@ -49,6 +49,9 @@ Feature: Test Audio CModel
     Then I click on the selector "#edit-next"
     # And wait for the page to be loaded
     Then wait for Ingest to complete
+    # Then wait for Ingest to complete
+    # Then wait for Ingest to complete
+    Then grab me a screenshot
     # Make sure the object ingested
     Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%22?type=dismax"
     Then I should see "Z (Audio) TEST"
@@ -137,6 +140,8 @@ Feature: Test Audio CModel
     Then I press "Regenerate all derivatives"
     Then I should see "This will create a new version for every datastream on the object. Please wait while this happens."
     Given I press "Regenerate"
+    Then wait for Ingest to complete
+    Then wait for Ingest to complete
     Then wait for Ingest to complete
     Then I should see the link "Derivatives successfully created"
     Given I click "Derivatives successfully created"
