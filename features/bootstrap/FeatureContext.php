@@ -514,16 +514,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     echo("Waiting until 'Manage' is visible again, max 10 minutes, in 1 minute increments: [");
     $manage_test = '.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a';
     
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery($manage_test).length > 0) && (jQuery($manage_test)[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery(" . $manage_test . ").length > 0) && (jQuery(" . $manage_test . ")[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
     echo("]");
   }
 
