@@ -166,16 +166,26 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
 
       $pid = $element->getText();
+
+      if(empty($pid)) {
+        throw new Exception("Could not navigate to the requested object: ".$pid);
+      }
+      echo("Navigating to: /islandora/object/". $pid);
+      $this->visitPath("/islandora/object/". $pid );
     }
     catch(Exception $e) {
-      throw new Exception($e->getMessage());
-    }
+      // not a default theme; try just clicking a link with that text
+      //$this->iClickTextInTheSelector($name, 'a');
 
-    if(empty($pid)) {
-      throw new Exception("Could not navigate to the requested object: ".$pid);
+      $element =  $session->getPage()->findLink($name);
+      if (null === $element) {
+        throw new \InvalidArgumentException(sprintf('Cannot find link with text: "%s"', $name));
+      } else {
+        echo("Navigating via clicking link: ". $name);
+        $element->click();
+      }
+      //throw new Exception($e->getMessage());
     }
-    echo("Navigating to: /islandora/object/". $pid);
-    $this->visitPath("/islandora/object/". $pid );
   }
 
   /**
@@ -513,7 +523,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     # $this->getSession()->wait(1000*360*1.5);
     echo("Waiting until 'Manage' is visible again, max 10 minutes, in 1 minute increments: [");
     // $manage_test = '.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a';
-    
+
     echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
     echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
     echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
