@@ -653,22 +653,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $repository = $connection->repository;
     $object = islandora_object_load($this->behat_test_collection_pid);
     if(empty($object)) {
-      throw new Exception("Unable to find the behat test collection in order to delete it.");
-    }
-    // try {
-    //   foreach($object as $datastream) {
-    //     $object->purgeDatastream($datastream->id);
-    //   }
-    // }
-    // catch(Exception $e) {
-    //   echo("WARNING: Could not purge test collection datastream: " . $datastream->id);
-    // }
-
-    try {
-      $repository->purgeObject($this->behat_test_collection_pid);
-    }
-    catch(Exception $e) {
-      throw new Exception("Could not purge the behat test collection. Message: " . $e->getMessage());
+      //throw new Exception("Unable to find the behat test collection in order to delete it.");
+      echo("WARNING: Unable to find the behat test collection in order to delete it.\n"); // this isn't actually worth failing for
+    } else {
+      try {
+        $repository->purgeObject($this->behat_test_collection_pid);
+      }
+      catch(Exception $e) {
+        //throw new Exception("Could not purge the behat test collection. Message: " . $e->getMessage());
+        echo("Could not purge the behat test collection. Message: " . $e->getMessage() . "\n");
+      }
     }
   }
 
