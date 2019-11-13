@@ -317,9 +317,7 @@ Feature: Test Audio CModel
     Then I press "Clear all caches"
     And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%22?type=dismax"
-    # Then I should see "(0 - 0 of 0)"
-    # For Colgate replace with "Then I should see "Sorry, but your search returned no results.""
-    Then I should see "Sorry, but your search returned no results."
+    Then I should see "(0 - 0 of 0)"
 
 
     # @api @apache @javascript @audio
