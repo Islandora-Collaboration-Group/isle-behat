@@ -30,7 +30,7 @@ Feature: Test LargeImage CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    Then I should see "MARCXML File"
+    # Then I should see "MARCXML File"
     # Then I press "Next"
     Then I click on the selector "#edit-next"
 
