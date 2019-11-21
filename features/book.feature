@@ -306,7 +306,6 @@ Feature: Test Book CModel
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (BOOK) TEST"
     # Delete new object
-    Then I should see the link "Pages"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
