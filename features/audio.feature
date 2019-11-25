@@ -246,7 +246,9 @@ Feature: Test Audio CModel
     And wait 5 seconds
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%20EDITED%22?type=dismax"
+    Then grab me a screenshot
     Then I should see "Z (Audio) TEST EDITED"
+    Then grab me a screenshot
     # Then I should see "behattest:"
     # Change Object title back to original
     # Given that I navigate to the page for the object named "Z (Audio) TEST"
