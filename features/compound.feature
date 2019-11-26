@@ -284,7 +284,8 @@ Feature: Test Compound Object CModel
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20EDITED?type=dismax"
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
+    Then I should see "Z (Compound"
     # Change Object title back to original
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
@@ -298,7 +299,8 @@ Feature: Test Compound Object CModel
     Then I should see "Z (Compound Child) 1"
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST?type=dismax"
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
+    Then I should see "Z (Compound"
     #similar test for "replace"
 
 
