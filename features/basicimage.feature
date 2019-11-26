@@ -228,7 +228,8 @@ Feature: Test BasicImage CModel
     Then I click on the selector "#edit-update"
     Then I should see "Z (Basic Image) TEST EDITED"
     # Test that object title did change and that search picks it up
-    Given the cache has been cleared
+    # Given the cache has been cleared
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28Basic%20Image%29%20TEST%20EDITED%22?type=dismax"
     # Then I should see "behattest:"
     Then I should see "Z (Basic Image) TEST EDITED"
