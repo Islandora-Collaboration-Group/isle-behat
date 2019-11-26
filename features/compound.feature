@@ -341,7 +341,7 @@ Feature: Test Compound Object CModel
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     # Delete new object
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -352,7 +352,7 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     # Delete first child object
     Given that I navigate to the page for the object named "Z (Compound Child) 1"
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -363,7 +363,7 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     # Delete second child object
     Given that I navigate to the page for the object named "Z (Compound Child) 2"
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
