@@ -249,6 +249,7 @@ Feature: Test Book CModel
     When I press "Update"
     Then I should see "Z (BOOK) TEST EDITED"
     # Test that object title did change and that search picks it up
+    And wait 5 seconds
     Given I am on "/islandora/search/%22Z%20%28BOOK%29%20TEST%20EDITED%22?type=dismax"
     # Then I should see "behattest:"
     Then I should see "Z (BOOK) TEST EDITED"
