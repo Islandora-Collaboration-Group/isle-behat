@@ -52,7 +52,6 @@ Feature: Test WARC CModel
 
     # Make sure the object ingested
     Given I am on "/islandora/search/%22Z%20%28WARC%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (WARC) TEST"
 
 

@@ -49,9 +49,10 @@ Feature: Test Audio CModel
     Then I click on the selector "#edit-next"
     # And wait for the page to be loaded
     Then wait for Ingest to complete
+    Then wait for Ingest to complete
+    # Then wait for Ingest to complete
     # Make sure the object ingested
     Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Audio) TEST"
 
 
@@ -138,6 +139,8 @@ Feature: Test Audio CModel
     Then I press "Regenerate all derivatives"
     Then I should see "This will create a new version for every datastream on the object. Please wait while this happens."
     Given I press "Regenerate"
+    Then wait for Ingest to complete
+    Then wait for Ingest to complete
     Then wait for Ingest to complete
     Then I should see the link "Derivatives successfully created"
     Given I click "Derivatives successfully created"
@@ -239,11 +242,16 @@ Feature: Test Audio CModel
     Then I fill in "edit-titleinfo-title" with "Z (Audio) TEST EDITED"
     When I press "Update"
     Then I should see "Z (Audio) TEST EDITED"
+    And wait 5 seconds
     # Test that object title did change and that search picks it up
-    Given I am on "/islandora/search/Z%20%28Audio%29%20TEST%20EDITED?type=dismax"
-    Then I should see "behattest:"
+    Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%20EDITED%22?type=dismax"
+    Then grab me a screenshot
+    Then I should see "Z (Audio) TEST EDITED"
+    Then grab me a screenshot
+    # Then I should see "behattest:"
     # Change Object title back to original
-    Given that I navigate to the page for the object named "Z (Audio) TEST"
+    # Given that I navigate to the page for the object named "Z (Audio) TEST"
+    Then I click "Z (Audio) TEST EDITED"
     Then I should see "Z (Audio) TEST EDITED"
     Then I click "Manage"
     Then I click "Datastreams"
@@ -254,8 +262,9 @@ Feature: Test Audio CModel
     When I press "Update"
     Then I should see "Z (Audio) TEST"
     # Check that object title is original and that search is picking it up
-    Given I am on "/islandora/search/Z%20%28Audio%29%20TEST?type=dismax"
-    Then I should see "behattest:"
+    Given I am on "/islandora/search/%22Z%20%28Audio%29%20TEST%22?type=dismax"
+    # Then I should see "behattest:"
+    Then I should see "Z (Audio) TEST"
 
 
     # Able to edit the Item Label of an AUDIO object's Properties?
@@ -294,7 +303,6 @@ Feature: Test Audio CModel
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Audio) TEST"
     # Delete new object
-    Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"

@@ -31,7 +31,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
     Then I should see "Title"
     Then I fill in "edit-titleinfo-title" with "Z (Compound Child) 1"
@@ -46,7 +46,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%201%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 1"
     # Add second object
     And I am on "/islandora/object/behattest:collection"
@@ -59,7 +58,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
     Then I should see "Title"
     Then I fill in "edit-titleinfo-title" with "Z (Compound Child) 2"
@@ -74,7 +73,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Child%29%202%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Child) 2"
     And I am on "/islandora/object/behattest:collection"
     Then I should see "Behat Test Collection"
@@ -86,7 +84,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
 
     Then I should see "Title"
@@ -98,7 +96,6 @@ Feature: Test Compound Object CModel
     ## Make sure the object ingested
     #Given I am logged in as a user with the "administrator" role
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST"
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     And I click "Manage"
@@ -265,7 +262,6 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     Given the cache has been cleared
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST"
 
 
@@ -286,10 +282,10 @@ Feature: Test Compound Object CModel
     Then I click on the selector "#edit-update"
     Then I should see "Z (Compound Child) 1"
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     # Test that object title did change and that search picks it up
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20EDITED?type=dismax"
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
+    Then I should see "Z (Compound"
     # Change Object title back to original
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     Then I should see "Z (Compound Child) 1"
@@ -303,7 +299,8 @@ Feature: Test Compound Object CModel
     Then I should see "Z (Compound Child) 1"
     # Check that object title is original and that search is picking it up
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST?type=dismax"
-    Then I should see "behattest:"
+    #Then I should see "behattest:"
+    Then I should see "Z (Compound"
     #similar test for "replace"
 
 
@@ -322,7 +319,6 @@ Feature: Test Compound Object CModel
     When I press "Update Properties"
     And wait 20 seconds
     When I am on "/islandora/search/%22Z%20%28Compound%20Object%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Compound Object) TEST LABEL-EDITED"
     # Able to search for newly edited Item Label of an Compound Object object's Properties using Islandora simple search?
     Given I am on "/islandora/search/Z%20%28Compound%20Object%29%20TEST%20LABEL-EDITED?type=dismax"
@@ -345,7 +341,7 @@ Feature: Test Compound Object CModel
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (Compound Object) TEST"
     # Delete new object
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -356,7 +352,7 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     # Delete first child object
     Given that I navigate to the page for the object named "Z (Compound Child) 1"
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"
@@ -367,7 +363,7 @@ Feature: Test Compound Object CModel
     And wait 20 seconds
     # Delete second child object
     Given that I navigate to the page for the object named "Z (Compound Child) 2"
-    Then I should see "In collections"
+    # Then I should see "In collections"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"

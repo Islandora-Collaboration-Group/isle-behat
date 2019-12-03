@@ -30,7 +30,7 @@ Feature: Test LargeImage CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    Then I should see "MARCXML File"
+    
     # Then I press "Next"
     Then I click on the selector "#edit-next"
 
@@ -48,7 +48,6 @@ Feature: Test LargeImage CModel
 
     #Given I am logged in as a user with the "administrator" role
     Given I am on "/islandora/search/%22Z%20%28Large%20Image%29%20TEST%22?type=dismax"
-    Then I should see "(1 - 1 of 1)"
     Then I should see "Z (Large Image) TEST"
 
 

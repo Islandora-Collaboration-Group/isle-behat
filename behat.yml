@@ -12,7 +12,7 @@ default: # Our DEFAULT profile targets the APACHE container with the @apache tag
               assets_path: "%paths.base%/features/assets/"
 
       filters:
-        tags: "@apache"
+        tags: "@apache&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://apache
@@ -90,7 +90,7 @@ solr: # SOLR profile
   suites:
     default:
       filters:
-        tags: "@solr"
+        tags: "@solr&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://solr:8080
@@ -99,7 +99,7 @@ traefik: # TRAEFIK profile
   suites:
     default:
       filters:
-        tags: "@traefik"
+        tags: "@traefik&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://traefik:8080
@@ -108,7 +108,7 @@ fedora: # FEDORA profile
   suites:
     default:
       filters:
-        tags: "@fedora"
+        tags: "@fedora&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://fedora:8080
@@ -117,7 +117,7 @@ imageservices: # IMAGESERVICES profile
   suites:
     default:
       filters:
-        tags: "@imageservices"
+        tags: "@imageservices&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://image-services:8080
@@ -126,7 +126,7 @@ portainer: # PORTAINER profile
   suites:
     default:
       filters:
-        tags: "@portainer"
+        tags: "@portainer&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://isle-portainer:9000
@@ -135,7 +135,7 @@ mysql: # MYSQL profile
   suites:
     default:
       filters:
-        tags: "@mysql"
+        tags: "@mysql&&~@disabled"
   extensions:
     Behat\MinkExtension:
       base_url: http://mysql:3306

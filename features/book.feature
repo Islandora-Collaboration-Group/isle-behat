@@ -249,10 +249,13 @@ Feature: Test Book CModel
     When I press "Update"
     Then I should see "Z (BOOK) TEST EDITED"
     # Test that object title did change and that search picks it up
-    Given I am on "/islandora/search/Z%20%28BOOK%29%20TEST%20EDITED?type=dismax"
-    Then I should see "behattest:"
+    And wait 5 seconds
+    Given I am on "/islandora/search/%22Z%20%28BOOK%29%20TEST%20EDITED%22?type=dismax"
+    # Then I should see "behattest:"
+    Then I should see "Z (BOOK) TEST EDITED"
     # Change Object title back to original
-    Given that I navigate to the page for the object named "Z (BOOK) TEST"
+    # Given that I navigate to the page for the object named "Z (BOOK) TEST"
+    Then I click "Z (BOOK) TEST EDITED"
     Then I should see "Z (BOOK) TEST EDITED"
     Then I click "Manage"
     Then I click "Datastreams"
@@ -263,8 +266,8 @@ Feature: Test Book CModel
     Then I click on the selector "#edit-update"
     Then I should see "Z (BOOK) TEST"
     # Check that object title is original and that search is picking it up
-    Given I am on "/islandora/search/Z%20%28BOOK%29%20TEST?type=dismax"
-    Then I should see "behattest:"
+    Given I am on "/islandora/search/%22Z%20%28BOOK%29%20TEST%22?type=dismax"
+    # Then I should see "behattest:"
     # similar test for "replace"
 
 
@@ -304,7 +307,6 @@ Feature: Test Book CModel
     #Given I am logged in as a user with the "administrator" role
     Given that I navigate to the page for the object named "Z (BOOK) TEST"
     # Delete new object
-    Then I should see the link "Pages"
     When I click "Manage"
     Then I click "Properties"
     Then I should see "Item Label"

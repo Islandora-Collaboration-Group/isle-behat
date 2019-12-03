@@ -166,16 +166,26 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       }
 
       $pid = $element->getText();
+
+      if(empty($pid)) {
+        throw new Exception("Could not navigate to the requested object: ".$pid);
+      }
+      echo("Navigating to: /islandora/object/". $pid);
+      $this->visitPath("/islandora/object/". $pid );
     }
     catch(Exception $e) {
-      throw new Exception($e->getMessage());
-    }
+      // not a default theme; try just clicking a link with that text
+      //$this->iClickTextInTheSelector($name, 'a');
 
-    if(empty($pid)) {
-      throw new Exception("Could not navigate to the requested object: ".$pid);
+      $element =  $session->getPage()->findLink($name);
+      if (null === $element) {
+        throw new \InvalidArgumentException(sprintf('Cannot find link with text: "%s"', $name));
+      } else {
+        echo("Navigating via clicking link: ". $name);
+        $element->click();
+      }
+      //throw new Exception($e->getMessage());
     }
-    echo("Navigating to: /islandora/object/". $pid);
-    $this->visitPath("/islandora/object/". $pid );
   }
 
   /**
@@ -512,16 +522,18 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   {
     # $this->getSession()->wait(1000*360*1.5);
     echo("Waiting until 'Manage' is visible again, max 10 minutes, in 1 minute increments: [");
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
-    echo($this->getSession()->wait(60000, "((jQuery('.tabs > li:nth-child(2) > a').length > 0) && (jQuery('.tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    // $manage_test = '.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a';
+
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
+    echo($this->getSession()->wait(60000, "((jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a').length > 0) && (jQuery('.nav-tabs > li:nth-child(2) > a, .tabs > li:nth-child(2) > a')[0].innerText.toLowerCase().startsWith('manage')))") ? '.' : '/');
     echo("]");
   }
 
@@ -641,22 +653,16 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $repository = $connection->repository;
     $object = islandora_object_load($this->behat_test_collection_pid);
     if(empty($object)) {
-      throw new Exception("Unable to find the behat test collection in order to delete it.");
-    }
-    // try {
-    //   foreach($object as $datastream) {
-    //     $object->purgeDatastream($datastream->id);
-    //   }
-    // }
-    // catch(Exception $e) {
-    //   echo("WARNING: Could not purge test collection datastream: " . $datastream->id);
-    // }
-
-    try {
-      $repository->purgeObject($this->behat_test_collection_pid);
-    }
-    catch(Exception $e) {
-      throw new Exception("Could not purge the behat test collection. Message: " . $e->getMessage());
+      //throw new Exception("Unable to find the behat test collection in order to delete it.");
+      echo("WARNING: Unable to find the behat test collection in order to delete it.\n"); // this isn't actually worth failing for
+    } else {
+      try {
+        $repository->purgeObject($this->behat_test_collection_pid);
+      }
+      catch(Exception $e) {
+        //throw new Exception("Could not purge the behat test collection. Message: " . $e->getMessage());
+        echo("Could not purge the behat test collection. Message: " . $e->getMessage() . "\n");
+      }
     }
   }
 
