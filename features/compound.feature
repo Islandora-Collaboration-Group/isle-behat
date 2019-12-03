@@ -31,7 +31,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    # Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
     Then I should see "Title"
     Then I fill in "edit-titleinfo-title" with "Z (Compound Child) 1"
@@ -58,7 +58,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    # Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
     Then I should see "Title"
     Then I fill in "edit-titleinfo-title" with "Z (Compound Child) 2"
@@ -84,7 +84,7 @@ Feature: Test Compound Object CModel
     And I wait for AJAX to finish
     Then I press "Next"
     And wait for the page to be loaded
-    # Then I should see "MARCXML File"
+    
     Then I click on the selector "#edit-next"
 
     Then I should see "Title"
